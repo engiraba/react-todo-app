@@ -23,29 +23,31 @@ function App() {
       <Divider />
       <nav aria-label="secondary mailbox folders">
         <List>
-          <ListItem disablePadding>
+        {
+          dummyData.map((item, i) => {
+            return (
+            
+            
+              <ListItem disablePadding>
             <ListItemButton>
             <Checkbox
               checked={dense}
               onChange={(event) => setDense(event.target.checked)}
             />
-              <ListItemText primary="Trash" />
+              <ListItemText primary={item} />
             </ListItemButton>
           </ListItem>
-          <ListItem disablePadding>
-            <ListItemButton component="a" href="#simple-list">
-              <ListItemText primary="Spam" />
-            </ListItemButton>
-          </ListItem>
+            
+            );
+          })
+        }
+          
+         
         </List>
       </nav>
     </Box>
 
-        {
-          dummyData.map((item, i) => {
-            return <ul> {item} </ul>;
-          })
-        }
+        
       </header>
     </div>
   );
