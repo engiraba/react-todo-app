@@ -4,6 +4,7 @@ import Box from '@mui/material/Box';
 import ItemToDo from './ItemToDo';
 import List from '@mui/material/List';
 import Divider from '@mui/material/Divider';
+import { FormHelperText, TextField } from '@mui/material';
 
 function App() { 
 
@@ -34,9 +35,23 @@ function App() {
     setData(newData);
   }
 
+  const addItem = item => e =>  {
+      if(e.key === 'Enter') {  
+        let newData = [...data];
+        newData.push({text: e.target.value, checked: false});    
+        setData(newData);      
+    }
+  }  
+
   return (
     <div className="App">
       <header className="App-header">
+        <Box
+          sx={{ width: '100%', maxWidth: 360, color: 'black', bgcolor: 'beige', marginBottom: '20px', padding: '25px'}}
+          >
+          <TextField id="newItem" label="New item" variant="standard" onKeyPress={addItem(this)} />
+          <FormHelperText>Press "Enter" to add new item in the list</FormHelperText>
+        </Box>
         <Box sx={{ width: '100%', maxWidth: 360, color: 'black', bgcolor: 'beige', borderRadius: '3%' }}>
           <Divider />
           <nav aria-label="secondary mailbox folders">
@@ -52,9 +67,9 @@ function App() {
                   )
                 })
               }
-            </List>
+            </List>           
           </nav>
-        </Box>
+        </Box>        
       </header>  
     </div>
   );
