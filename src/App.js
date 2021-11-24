@@ -24,24 +24,15 @@ function App() {
             <List>
               {
                 dummyData.map((item, i) => {
-                  return (
-
-
-                   <div> <ItemToDo text={item}/>
-                    
-</div>
+                  return ( 
+                    <ItemToDo text={item}/>
                   );
                 })
               }
-
-
             </List>
           </nav>
         </Box>
-      
-
-      </header>
-      
+      </header>  
     </div>
   );
 }

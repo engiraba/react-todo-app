@@ -8,10 +8,7 @@ function ItemToDo(props) {
     const [done, setCheck] = React.useState(false);
 
     return (
-       
-
         <ListItem disablePadding > 
-
             <ListItemButton >
             <Checkbox
                     checked={done}
@@ -22,12 +19,8 @@ function ItemToDo(props) {
                 <ListItemText
                     primary={props.text}
                 />
-
-            </ListItemButton >
-
-            
+            </ListItemButton >            
         </ListItem>
-
     );
 
 } export default ItemToDo;
