@@ -7,17 +7,22 @@ import Checkbox from '@mui/material/Checkbox';
 function ItemToDo(props) {
     const [done, setCheck] = React.useState(false);
 
+    function switchCheck(e) {
+        setCheck(e.target.checked);
+    }
+
     return (
         <ListItem disablePadding > 
             <ListItemButton >
             <Checkbox
                     checked={done}
                     onChange={
-                        (event) => setCheck(event.target.checked)
+                        (event) => switchCheck(event)
                     }
                 />
                 <ListItemText
-                    primary={props.text}
+                    primary={props.item?.text}
+                    sx={{textDecoration: done ? 'line-through' : ''}}
                 />
             </ListItemButton >            
         </ListItem>

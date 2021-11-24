@@ -5,15 +5,34 @@ import ItemToDo from './ItemToDo';
 import List from '@mui/material/List';
 import Divider from '@mui/material/Divider';
 
-function App() {
+function App() { 
 
-  const dummyData = [
-    'Do groceries shopping',
-    'Repair micro-wave',
-    'Do laundry',
-    'Walk in the park',
-    'Clean up desk'
+  const dummyData = [{
+      text: 'Do groceries shopping',
+      checked: false,
+    }
+    ,{
+      text: 'Repair micro-wave',
+      checked: false,
+    },{
+      text: 'Do laundry',
+      checked: false,
+    },{
+      text: 'Walk in the park',
+      checked: false,
+    },{
+      text: 'Clean up desk',
+      checked: false,
+    }
   ]
+
+  const [data, setData] = React.useState(dummyData);
+
+  const handler = index => e => {
+    let newData = [...data];
+    newData[index].checked = e.target.value;    
+    setData(newData);
+  }
 
   return (
     <div className="App">
@@ -23,10 +42,14 @@ function App() {
           <nav aria-label="secondary mailbox folders">
             <List>
               {
-                dummyData.map((item, i) => {
+                data.sort(function(x, y) {
+                  return (x.checked === y.checked) ? 0 : x.checked ? -1 : 1;
+               }).map((item, index) => {
                   return ( 
-                    <ItemToDo text={item}/>
-                  );
+                    <div >
+                      <ItemToDo item={item} onChange={handler(index)} /> 
+                    </div>
+                  )
                 })
               }
             </List>
